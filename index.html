@@ -177,6 +177,18 @@
     ]
   }
   </script>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        // 这里告诉 MathJax 识别单美元符号 $ 为行内公式
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 <body>
 
@@ -241,7 +253,11 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">MatE: Material Extraction from Single-Image via Geometric Prior</h1>
+            <h1 class="title is-1 publication-title">
+              <span style="background: linear-gradient(to right, #E41A1C, #984EA3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mat</span><span style="background: linear-gradient(to right, #984EA3, #377EB8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">E</span>:
+              <span style="background: linear-gradient(to right, #E41A1C, #984EA3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mat</span>erial
+              <span style="background: linear-gradient(to right, #984EA3, #377EB8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">E</span>xtraction from Single-Image via Geometric Prior</span>
+            </h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
@@ -298,7 +314,7 @@
 <section class="hero teaser" style="background-color: #ffffff;">
   <div class="container is-max-desktop">
     <div class="hero-body" style="background-color: #ffffff; padding: 0;">
-      <img src="static/images/insight_cropped.jpg" alt="" style="width: 100%; display: block; clip-path: inset(2px);">
+      <img src="static/images/figures/insight_cropped.jpg" alt="" style="width: 100%; display: block; clip-path: inset(2px);">
       
       <h2 class="subtitle has-text-left">
         We propose MatE, a novel method for high-fidelity Physically Based Rendering (PBR) material extraction. Given a region, our method first performs rectification via geometric prior, followed by further reducing distortion and extracting the target material. The region can be sourced from user input or segmentation models like SAM. The extracted PBR materials(Albedo, Normal, Roughness, Height) enable the construction and texturing of realistic 3D scenes.
@@ -331,34 +347,35 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
+      <h2 class="title is-3 has-text-centered">Method Overview</h2>
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
+        <img src="static/images/figures/backbone_cropped.png" alt="First research result visualization" loading="lazy" style="clip-path: inset(2px);"/>
         <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
+        <h2 class="subtitle has-text-left">
+          Overview of our pipeline, $\mathcal{E}$ denotes the pre-trained encoder. (<b>Left</b>) Our model consists of a Reference U-Net that processes the masked input latents to extract conditional KV features and a Main U-Net that denoises the the latent material maps ($z_{t^{\prime}}$) guided by the injected KV features. (<b>Right</b>) Visualization of our coarse rectification based on geometric prior.
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
+        <img src="static/images/figures/data_generate_cropped.png" alt="Second research result visualization" loading="lazy" style="clip-path: inset(2px); width: 75%; display: block; margin-left: auto; margin-right: auto;"/>
+        <h2 class="subtitle has-text-left">
+          Overview of our dataset construction pipeline. We apply thin-plate spline (TPS) transformations to planar meshes to introduce geometric distortions. PBR materials are then mapped onto these meshes using UV coordinates, and HDRIs are employed for realistic environmental illumination. From randomly sampled camera positions and viewpoints, we then utilize Blender to render synthetic images and their corresponding masks, concurrently saving the camera poses which are essential during our training.
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
+        <img src="static/images/figures/mesh_object_cropped.png" alt="Third research result visualization" loading="lazy" style="clip-path: inset(2px); width: 65%; display: block; margin-left: auto; margin-right: auto;"/>
+        <h2 class="subtitle has-text-left">
+         To circumvent artifacts such as physically implausible scaling variations(eg. inset (a)) and structural disruptions caused by discontinuous UVs(eg. insets (b) and (c)) that arise when mapping materials to complex 3D models, we generate our dataset using topologically simpler, planar meshes distorted via thin-plate spline transformation.
        </h2>
      </div>
      <div class="item">
       <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
+      <img src="static/images/figures/data_ambiguous_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(2px); width: 60%; display: block; margin-left: auto; margin-right: auto;"/>
+      <h2 class="subtitle has-text-left">
+        Illustration of orientation ambiguity. Given an input image and mask, the model will face inherent uncertainty regarding the canonical orientation of the material.
       </h2>
     </div>
   </div>
@@ -367,35 +384,11 @@
 </section>
 <!-- End image carousel -->
 
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
 <!-- Video carousel -->
-<section class="hero is-small">
+<section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
+      <h2 class="title is-3 has-text-centered">Result Overview</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
           <!-- TODO: Add poster image for better preview -->
@@ -423,28 +416,6 @@
   </div>
 </section>
 <!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
