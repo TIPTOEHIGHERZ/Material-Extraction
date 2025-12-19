@@ -261,20 +261,20 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <sup><a href="#ustc">1 </a></sup><a href="https://openreview.net/profile?id=%7EZeyu_Zhang30" target="_blank">Zeyu Zhang</a>,</span>
+                <a href="https://openreview.net/profile?id=%7EZeyu_Zhang30" target="_blank">Zeyu Zhang</a><sup><a href="#ustc">1</a></sup>,</span>
                 <span class="author-block">
-                  <sup><a href="#ustc">1 </a></sup><a href="https://scholar.google.com/citations?hl=zh-CN&user=UI5_qZcAAAAJ" target="_blank">Wei Zhai</a>,</span>
+                  <a href="https://scholar.google.com/citations?hl=zh-CN&user=UI5_qZcAAAAJ" target="_blank">Wei Zhai</a><sup><a href="#ustc">1</a></sup>,</span>
                   <span class="author-block">
-                    <sup><a href="#ustc">1 </a></sup><a href="https://scholar.google.com/citations?hl=zh-CN&user=ljofw9cAAAAJ" target="_blank">Jian Yang</a>,
+                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=ljofw9cAAAAJ" target="_blank">Jian Yang</a><sup><a href="#ustc">1</a></sup>,
                   </span>
                   <span class="author-block">
-                    <sup><a href="#ustc">1 </a></sup><a href="https://scholar.google.com/citations?hl=zh-CN&user=K7rTHNcAAAAJ" target="_blank">Yang Cao</a>
+                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=K7rTHNcAAAAJ" target="_blank">Yang Cao</a><sup><a href="#ustc">1</a></sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors" id="institution">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block" id="ustc"><sup>1 </sup>University of Science and Technology of China</span>
+                    <span class="author-block" id="ustc"><sup>1</sup>University of Science and Technology of China</span>
                     <!-- TODO: Remove this line if no equal contribution -->
                     <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
@@ -317,7 +317,7 @@
       <img src="static/images/figures/insight_cropped.jpg" alt="" style="width: 100%; display: block; clip-path: inset(2px);">
       
       <h2 class="subtitle has-text-left">
-        We propose MatE, a novel method for high-fidelity Physically Based Rendering (PBR) material extraction. Given a region, our method first performs rectification via geometric prior, followed by further reducing distortion and extracting the target material. The region can be sourced from user input or segmentation models like SAM. The extracted PBR materials(Albedo, Normal, Roughness, Height) enable the construction and texturing of realistic 3D scenes.
+        We propose MatE, a novel method for high-fidelity Physically Based Rendering (PBR) material extraction. Given a region, our method first performs rectification via geometric prior, followed by further reducing distortion and extracting the target material. The region can be sourced from user input or segmentation models like SAM. The extracted PBR materials(Albedo, Normal, Roughness, Height) enable the construction and texturing of realistic 3D scenes.<br><br>
       </h2>
     </div>
   </div>
@@ -388,34 +388,71 @@
 <section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Result Overview</h2>
+      <h2 class="title is-3 has-text-centered">Experiment Result Overview</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
           <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
+          <img src="static/images/figures/result_qualitative_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 60%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-left">
+            Qualitative comparison of material extraction results with state-of-the-art methods on real-world images. Within each cell, the four maps are (top-left to bottom-right) albedo, normal, roughness and height. <b>Material Palette</b> omits height (map left blank). $^*$ denotes our re-implementation of <b>MaterialPicker</b>, which we built upon the Video DiT framework of <b>Wan-Video</b>.
+          </h2>
         </div>
         <div class="item item-video2">
           <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
+          <img src="static/images/figures/coarse_rectify_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 60%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-left">
+            Our unprojection generates a coarsely rectified texture, suffers from holes (Column 4). Our interpolation fills these artifacts to produce a dense map (Column 5).
+          </h2>
         </div>
         <div class="item item-video3">
           <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+          <img src="static/images/figures/enhance_matpal_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 60%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-centered">
+            Qualitative results of our geometry-based coarse rectification as a plug-and-play module on <b>Material Palette</b>.
+          </h2>
+        </div>
+        <div class="item item-video4">
+          <!-- TODO: Add poster image for better preview -->
+          <img src="static/images/figures/tileable_material_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 60%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-centered">
+            Visualization of generated tileable materials. The figure displays tileable materials generated by <b>noise rolling</b>.
+          </h2>
+        </div>
+        <div class="item item-video5">
+          <!-- TODO: Add poster image for better preview -->
+          <img src="static/images/figures/rectification_hyperparameters_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-left">
+            Sensitivity analysis of hyperparameters. We demonstrate that a large depth shift $d_{\text{shift}}$ diminishes perspective correction strength by flattening depth, while a small scale factor $[s_x, s_y]$ fills projection holes at the cost of image sharpness.
+          </h2>
+        </div>
+        <div class="item item-video6">
+          <!-- TODO: Add poster image for better preview -->
+          <img src="static/images/figures/data_comparison_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 100%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-left">
+            Quality comparison of synthetic datasets. We compare materials generated by our pipeline against <b>MaterialPicker</b>. MaterialPicker utilizes complex underlying geometries, which inevitably lead to severe distortions and discontinuities, breaking the structure of the texture. In contrast, our approach effectively preserves the structural integrity and coherence of the patterns.
+          </h2>
+        </div>
+        <div class="item item-video7">
+          <!-- TODO: Add poster image for better preview -->
+          <img src="static/images/figures/phone_capture_cropped.png" alt="Fourth research result visualization" loading="lazy" style="clip-path: inset(0px); width: 60%; display: block; margin-left: auto; margin-right: auto;"/>
+          <h2 class="subtitle has-text-centered">
+            Qualitative results on real-world images. We present material extraction results from inputs captured by mobile devices in unconstrained environments.
+          </h2>
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- End video carousel -->
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">3D Overview</h2>
+  </div>
+</div>
+</div>
+</section>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
